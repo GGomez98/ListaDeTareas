@@ -32,6 +32,7 @@ function enlistarTarea(){
     }
     else{
         agregarTarea(INPUT_TAREAS.value)
+        INPUT_TAREAS.value = ''
     }
 }
 
