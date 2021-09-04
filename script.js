@@ -26,7 +26,7 @@ function agregarTarea(tarea){
 BOTON_AGREGAR_TAREAS.addEventListener('click', enlistarTarea)
 
 function enlistarTarea(){
-    if(/^\s/.test(INPUT_TAREAS.value)||INPUT_TAREAS.value == ''){
+    if(/^\W/.test(INPUT_TAREAS.value)||INPUT_TAREAS.value == ''){
         alert('Introduzca una tarea')
         INPUT_TAREAS.value = ''
     }
