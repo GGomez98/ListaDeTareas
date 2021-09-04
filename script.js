@@ -1,31 +1,47 @@
-const TAREAS = document.getElementById('Tareas')
-let divTarea = document.getElementsByClassName('tarea-div')
-let divBorrar = document.getElementsByClassName('borrar-button')
-let pTarea = document.getElementsByClassName('p-tarea')
-let botonAgregar = document.getElementById('agregar-tareas')
-let input = document.getElementById('input-tarea')
+const INPUT_TAREAS = document.getElementById('input-tarea')
+const BOTON_AGREGAR_TAREAS = document.getElementById('boton-tareas')
+const LISTA_TAREAS = document.getElementById('ul-tareas')
+const ITEM_TAREA = document.getElementsByClassName('li')
+const BOTON_CERRAR = document.getElementsByClassName('close-button')
+const TEXTO_TAREA = document.getElementsByClassName('p')
 
-//agrega una tarea a la lista
-function insertarTarea(tarea){
-    let divTarea = document.createElement('div')
-    divTarea.className = 'tarea-div'
-    let pTarea = document.createElement('p')
-    pTarea.className = 'p-tarea'
-    pTarea.innerText = tarea
-    let divBorrar = document.createElement('button')
-    divBorrar.className = 'borrar-button'
-    divBorrar.innerText = 'X'
-    TAREAS.appendChild(divTarea)
-    divTarea.appendChild(pTarea)
-    divTarea.appendChild(divBorrar)
+function agregarTarea(tarea){
+    // agrega el item
+    let li = document.createElement('li')
+    li.className = 'li'
+    LISTA_TAREAS.appendChild(li)
+    //agrega el texto
+    let p = document.createElement('p')
+    p.className = 'p'
+    p.innerText = tarea
+    li.appendChild(p)
+    // argega el boton de borrar
+    let button = document.createElement('button')
+    button.className = 'close-button'
+    button.innerText = 'X'
+    li.appendChild(button)
 }
 
-//agrega a la lista lo que aparezca en el input y en el caso de no haber nada en el mismo arroja una alerta
-botonAgregar.onclick = ()=> {
-    if(/\s/.test(input.value)||input.value==''){
-        return alert('Inserte una tarea')
+//agrega a la lista los elementos del input siempre y cuando no empieze con un espacio en blanco
+BOTON_AGREGAR_TAREAS.addEventListener('click', enlistarTarea)
+
+function enlistarTarea(){
+    if(/^\s/.test(INPUT_TAREAS.value)||INPUT_TAREAS.value == ''){
+        alert('Introduzca una tarea')
+        INPUT_TAREAS.value = ''
     }
     else{
-        insertarTarea(input.value)
+        agregarTarea(INPUT_TAREAS.value)
+        INPUT_TAREAS.value = ''
+    }
+}
+
+// elimina las tareas de la lista
+LISTA_TAREAS.addEventListener('click', removerItem)
+
+function removerItem(e){
+    if(e.target.className == 'close-button'){
+        let li = e.target.parentElement;
+        LISTA_TAREAS.removeChild(li)
     }
 }
