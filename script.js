@@ -4,11 +4,18 @@ const LISTA_TAREAS = document.getElementById('ul-tareas')
 const ITEM_TAREA = document.getElementsByClassName('li')
 const BOTON_CERRAR = document.getElementsByClassName('close-button')
 const TEXTO_TAREA = document.getElementsByClassName('p')
+let tareas = []
 
 function agregarTarea(tarea){
-    // agrega el item
+    tareas.push(tarea)
+    // agrega el item y colorea su fondo segun su posición en la lista
     let li = document.createElement('li')
     li.className = 'li'
+    if(tareas.lastIndexOf(tarea)%2==0){
+        li.style.backgroundColor = '#DCDAD9'
+    } else{
+        li.style.backgroundColor = 'white'
+    }
     LISTA_TAREAS.appendChild(li)
     //agrega el texto
     let p = document.createElement('p')
@@ -43,5 +50,6 @@ function removerItem(e){
     if(e.target.className == 'close-button'){
         let li = e.target.parentElement;
         LISTA_TAREAS.removeChild(li)
+        tareas.splice(tareas.indexOf(e),1)
     }
 }
