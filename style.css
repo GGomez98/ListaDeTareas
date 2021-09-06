@@ -4,6 +4,10 @@
     font-family: Bebas Neue;
 }
 
+body{
+    background: linear-gradient(180deg,rgb(255, 100, 82), lightcoral)
+}
+
 #main-container{
     width: 99.9%;
     height: 99.8vh;
@@ -21,6 +25,7 @@
     height: 10%;
     display: flex;
     justify-content: center;
+    background-color:rgb(255, 167, 167)
 }
 
 #lista-de-tareas{
@@ -40,9 +45,35 @@
     display: flex;
 }
 
+#input-tarea{
+    font-size: 40px;
+}
+
 #boton-tareas{
     width: 40%;
     display: flex;
+}
+
+#agregar-tareas{
+    background-color: rgb(255, 60, 38);
+    color: white;
+    border: none;
+    font-size: 40px;
+}
+
+#agregar-tareas:hover{
+    animation-name: hover-agregar;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hover-agregar{
+    0%{
+        background-color: rgb(255, 60, 38);
+    }
+    100%{
+        background-color: rgb(253, 97, 80);
+    }
 }
 
 .Insertar-tareas{
@@ -53,19 +84,95 @@
 .li{
     list-style-type: none;
     display: flex;
-    height: 5vh
+    height: fit-content;
 }
 
 .p{
     width: 95%;
     align-self: center;
     margin-left: 3%;
-    font-size: x-large;
+    font-size: xx-large;
+    margin-left: 2%;
 }
 
 .close-button{
     width: 5%;
     height: 90%;
-    margin-right: 3%;
-    align-self: center;
+    background-color: red;
+    color: white;
+    border: none;
+    font-size: xx-large;
+    margin: 1% 1% 1% 0%;
+}
+
+.close-button:hover{
+    animation-name: hover-cerrar;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hover-cerrar{
+    0%{
+        background-color: red;
+    }
+    100%{
+        background-color: rgb(255, 77, 77);
+    }
+}
+
+@media (max-width: 1920px){
+    #list-container{
+        width: 80%;
+        height: 90%;
+    }
+}
+
+@media (max-width: 420px){
+    #list-container{
+        width: 80%;
+        height: 90%;
+    }
+
+    #lista-de-tareas{
+        align-self: center;
+        width: 80%;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .p{
+        font-size: medium;
+        margin-top: 1%;
+    }
+
+    #agregar-tareas{
+        font-size: large;
+    }
+
+    #input-tarea{
+        font-size: 25px;
+    }
+
+    .close-button{
+        font-size: medium;
+    }
+
+}
+
+@media (max-height:420px){
+    #lista-de-tareas{
+        font-size: 25px;
+    }
+    #input-tarea::placeholder{
+        font-size: 25px;
+    }
+    #agregar-tareas{
+        font-size: 25px;
+    }
+    .p{
+        font-size: x-large;
+    }
+    #input-tarea{
+        font-size: x-large;
+    }
 }

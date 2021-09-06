@@ -29,7 +29,7 @@ function agregarTarea(tarea){
     li.appendChild(button)
 }
 
-//agrega a la lista los elementos del input siempre y cuando no empieze con un espacio en blanco
+//agrega a la lista los elementos del input siempre y cuando no empieze con un espacio en blanco o tenga algo escrito
 BOTON_AGREGAR_TAREAS.addEventListener('click', enlistarTarea)
 
 function enlistarTarea(){
