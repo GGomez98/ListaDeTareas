@@ -48,8 +48,8 @@ LISTA_TAREAS.addEventListener('click', removerItem)
 
 function removerItem(e){
     if(e.target.className == 'close-button'){
-        let li = e.target.parentElement;
-        LISTA_TAREAS.removeChild(li)
+        let item = e.target.parentElement;
+        LISTA_TAREAS.removeChild(item)
         tareas.splice(tareas.indexOf(e),1)
-    }
+    } 
 }
